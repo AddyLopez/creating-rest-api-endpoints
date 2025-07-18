@@ -9,10 +9,10 @@ const router = express.Router();
 let ALL_BOOKS = [
   {
     id: uuidv4(),
-    title: 'JavaScript For Dummies',
+    title: "JavaScript For Dummies",
     start: new Date(2021, 10, 1).toISOString(),
     end: new Date(2021, 10, 5).toISOString(),
-  }
+  },
 ];
 
 /**
@@ -28,10 +28,10 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const { id } = req.params;
 
-  // Find the restaurant with the matching id.
+  // Find the book with the matching id.
   const book = ALL_BOOKS.find((book) => book.id === id);
 
-  // If the restaurant doesn't exist, let the client know.
+  // If the book doesn't exist, let the client know.
   if (!book) {
     res.sendStatus(404);
     return;
@@ -68,9 +68,7 @@ router.post("/", (req, res) => {
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
 
-  const newListOfBooks = ALL_BOOKS.filter(
-    (book) => book.id !== id
-  );
+  const newListOfBooks = ALL_BOOKS.filter((book) => book.id !== id);
 
   // The user tried to delete a book that doesn't exist.
   if (ALL_BOOKS.length === newListOfBooks.length) {
@@ -97,9 +95,9 @@ router.put("/:id", (req, res) => {
     return;
   }
 
-  book.title    = newTitle;
-  book.start    = newStart;
-  book.end      = newEnd;
+  book.title = newTitle;
+  book.start = newStart;
+  book.end = newEnd;
 
   res.sendStatus(200);
 });
