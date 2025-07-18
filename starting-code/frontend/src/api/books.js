@@ -49,4 +49,6 @@ export const deleteBook = async (id) => {
   const response = await fetch(`${API_ENDPOINT}/books/${id}`, {
     method: "DELETE",
   });
+
+  return response.status;
 };
